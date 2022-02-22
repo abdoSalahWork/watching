@@ -1,0 +1,31 @@
+<div *ngIf="!isLoad">
+  <div class="col-12 bg-transparent vh-100">
+    <div  class="sk-chase">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </div>
+</div>
+
+<div  *ngIf="isLoad">
+  <app-navbar></app-navbar>
+  <section>
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-md-4">
+          <img class="w-100" [src]="imgUrl+dataTv?.poster_path" alt="">
+        </div>
+        <div class="col-md-8">
+          <h2>{{dataTv?.original_name}}</h2>
+          <p>{{dataTv?.overview}}</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+

@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "first_name": "abdo",
+      "last_name": "salah",
+      "email": "abdo.salah@gmail.com",
+      "password": "abdo@123",
+      "age": "23"
+    },
+    {
+      "first_name": "abdallah",
+      "last_name": "salah",
+      "email": "abdallh.salah@gmail.com",
+      "password": "abdo@123",
+      "age": "24"
+    },
+    {
+      "first_name": "heama",
+      "last_name": "salah",
+      "email": "hema.salah@gmail.com",
+      "password": "abdo@123",
+      "age": "12"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

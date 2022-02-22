@@ -1,0 +1,61 @@
+<div *ngIf="isLoad">
+  <div  class="col-12 bg-transparent vh-100" >
+    <div  *ngFor="let load of numLoads" class="sk-chase">
+      <div [routerLink]="[load]"  class="sk-chase-dot"></div>
+      <!-- <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div> -->
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoad">
+  <app-navbar (valueSearch)="onSearch($event)"></app-navbar>
+  <div *ngIf="isSearch" class="container my-5">
+    <div class="row">
+
+      <div *ngFor='let search of trendingSearch' class="col-md-3 my-3">
+        <div>
+          <a [routerLink]="['/tvdetails',search.id]">
+            <img *ngIf="imgUrl+this.search?.poster_path != 'https://image.tmdb.org/t/p/w500null'" class="w-100"
+              [src]='imgUrl+search?.poster_path' [alt]="search.name">
+            <img *ngIf="imgUrl+this.search?.poster_path == 'https://image.tmdb.org/t/p/w500null'" class="w-100 h-100"
+              src="../../assets/image/no-image-available.png">
+
+              <h3 class="my-2 h6 text-center">{{search.name}}</h3>
+            <div class="vote text-center">{{search.vote_average}}</div>
+            <i class="fas fa-star"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isSearch" class="container">
+    <div class="movies my-5">
+      <div class="row">
+        <div *ngFor='let tv of trendingTv' class="col-md-3 my-3">
+          <a [routerLink]="['/tvdetails',tv.id]">
+            <img class="w-100" [src]='imgUrl+tv?.poster_path' [alt]="tv.original_name">
+            <h3 class="my-2 h6 text-center">{{tv.original_name}}</h3>
+            <div class="vote text-center">{{tv.vote_average}}</div>
+          </a>
+        </div>
+    </div>
+    </div>
+
+    <nav aria-label="Page navigation example" >
+      <ul class="pagination justify-content-center" >
+        <li *ngFor="" class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number-1)"><i class="fas fa-backward"></i></a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number=1)" >1</a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number=2)">2</a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number=3)">3</a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number=4)">4</a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number=5)">5</a></li>
+        <li class="page-item"><a class="bg-transparent text-info px-3 border-dark page-link" (click)="getTv(number+1)"><i class="fas fa-forward"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

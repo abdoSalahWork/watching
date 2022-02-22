@@ -1,0 +1,119 @@
+<div *ngIf="!loadMovie && !loadTv && !loadPeople">
+  <div class="col-12 bg-transparent vh-100">
+    <div  class="sk-chase">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </div>
+</div>
+<div *ngIf ="loadMovie && loadTv && loadPeople">
+
+<app-navbar (valueSearch)="onSearch($event)"></app-navbar>
+
+<div *ngIf="isSearch" class="container my-5">
+  <div class="row">
+    <div *ngFor='let search of trendingSearch' class="col-md-2 my-3">
+      <div *ngIf=" search.media_type == 'movie'">
+        <a [routerLink]="['/moviedetails',search.id]">
+          <img *ngIf="imgUrl+this.search?.poster_path != 'https://image.tmdb.org/t/p/w500null'" class="w-100"
+            [src]='imgUrl+search?.poster_path' [alt]="search.name">
+
+          <img *ngIf="imgUrl+this.search?.poster_path == 'https://image.tmdb.org/t/p/w500null'" class="w-100 h-100"
+            src="../../assets/image/no-image-available.png">
+          <h3 class="my-2 h6 text-center">{{search.title}}</h3>
+          <div class="vote text-center">{{search.vote_average}}</div>
+          <i class="fas fa-star"></i>
+        </a>
+      </div>
+      <div *ngIf=" search.media_type == 'tv'">
+        <a [routerLink]="['/tvdetails',search.id]">
+          <img *ngIf="imgUrl+this.search?.poster_path != 'https://image.tmdb.org/t/p/w500null'" class="w-100"
+            [src]='imgUrl+search?.poster_path' [alt]="search.name">
+          <img *ngIf="imgUrl+this.search?.poster_path == 'https://image.tmdb.org/t/p/w500null'" class="w-100 h-100"
+            src="../../assets/image/no-image-available.png">
+          <h3 class="my-2 h6 text-center">{{search.name}}</h3>
+          <div class="vote text-center">{{search.vote_average}}</div>
+          <i class="fas fa-star"></i>
+        </a>
+      </div>
+
+      <div *ngIf=" search.media_type == 'person'">
+        <a [routerLink]="['/persondetails',search.id]">
+          <img *ngIf="imgUrl+this.search?.profile_path != 'https://image.tmdb.org/t/p/w500null'" class="w-100"
+            [src]='imgUrl+search?.profile_path' [alt]="search.name">
+          <img *ngIf="imgUrl+this.search?.profile_path == 'https://image.tmdb.org/t/p/w500null'" class="w-100 h-100"
+            src="../../assets/image/no-image-available.png">
+          <h3 class="my-2 h6 text-center">{{search.name}}</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isSearch">
+  <app-homeheader [perantData]='trendingMovies'></app-homeheader>
+  <div class="container">
+    <div class="movies my-5">
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <div class="content mt-5 position-relative">
+            <h2>Trending Movies <br> to watch Right Now </h2>
+            <p>most watched Movies by days</p>
+          </div>
+        </div>
+        <div *ngFor='let movie of trendingMovies.slice(0,10)' class="col-md-2 my-3">
+          <a [routerLink]="['/moviedetails',movie.id]">
+            <img class="w-100" [src]='imgUrl+movie.poster_path' [alt]="movie.title">
+            <h3 class="my-2 h6 text-center">{{movie.title}}</h3>
+            <div class="vote text-center">{{movie.vote_average}}</div>
+          </a>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="tv my-5">
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <div class="content mt-5 position-relative">
+            <h2>Trending Tv <br> to watch Right Now </h2>
+            <p>most watched Tv by days</p>
+          </div>
+        </div>
+        <div *ngFor='let tv of trendingTv.slice(0,10)' class="col-md-2 my-3 position-relative">
+          <a [routerLink]="['/tvdetails',tv.id]">
+            <img class="w-100" [src]='imgUrl+tv.poster_path' [alt]="tv.title">
+            <h3 class=" h6 my-2 text-center">{{tv.name}}</h3>
+            <div class="vote text-center">{{tv.vote_average}}</div>
+          </a>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="person my-5">
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <div class="content mt-5 position-relative">
+            <h2>Trending People <br> to watch Right Now </h2>
+            <p>most watched People by days</p>
+          </div>
+        </div>
+        <div *ngFor='let person of trendingPerson.slice(0,10)' class="col-md-2 my-3">
+          <a [routerLink]="['/persondetails',person.id]">
+            <img class="w-100" [src]='imgUrl+person.profile_path' [alt]="person.name">
+            <h3 class="my-2 h6 text-center">{{person.name}}</h3>
+          </a>
+          <i [routerLink]="['/favorite',person.id]" class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>

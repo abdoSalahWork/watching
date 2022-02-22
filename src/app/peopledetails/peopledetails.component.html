@@ -1,0 +1,35 @@
+<div *ngIf="!isLoad">
+  <div class="col-12 bg-transparent vh-100">
+    <div  class="sk-chase">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoad">
+<app-navbar></app-navbar>
+<section>
+  <div class="container">
+    <div class="row my-5 align-items-center">
+      <div class="col-md-4" *ngIf ="imgUrl+this.dataPerson?.profile_path != 'https://image.tmdb.org/t/p/w500null'">
+        <img class="w-100" [src]='imgUrl+dataPerson?.profile_path' [alt]="dataPerson.title">
+      </div>
+
+      <div class="col-md-4" *ngIf ="imgUrl+this.dataPerson?.profile_path == 'https://image.tmdb.org/t/p/w500null'">
+        <img class="w-100 h-100" src="../../assets/image/no-image-available.png">
+      </div>
+
+      <div class="col-md-8 p-4">
+        <h2>{{dataPerson?.name}}</h2>
+        <p class="py-3 w-75" >{{dataPerson?.biography}}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>

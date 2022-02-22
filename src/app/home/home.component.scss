@@ -1,0 +1,10 @@
+.col-md-2 i{
+  position: absolute;
+  top: 5px;
+  font-size: 25px;
+  cursor: pointer;
+  color: rgba($color: rgba(255, 255, 255, 0.200), $alpha: 0.7);
+}
+.col-md-2 i:hover{
+  color: rgba($color: rgba(255, 0, 0, 0.144), $alpha: 0.8);
+}
